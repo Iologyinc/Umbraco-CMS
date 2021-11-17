@@ -68,7 +68,7 @@ jobs:
     
     - name: Execute build.bat
       shell: pwsh
-      run: .\build.bat
+      run: .\build\build.ps1
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
