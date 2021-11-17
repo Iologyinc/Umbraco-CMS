@@ -65,10 +65,12 @@ jobs:
     #- run: |
     #   make bootstrap
     #   make release
+    - run: msbuild src\umbraco.sln
     
-    - name: Execute build.bat
-      shell: pwsh
-      run: .\build\build.ps1
+    # This doesn't work
+    #- name: Execute build.bat
+    #  shell: pwsh
+    #  run: .\build\build.ps1
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
