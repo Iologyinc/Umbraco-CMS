@@ -68,8 +68,7 @@ jobs:
     
     - name: Execute build.bat
       shell: cmd
-      run: |
-        build.bat
+      run: .\build.bat
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
