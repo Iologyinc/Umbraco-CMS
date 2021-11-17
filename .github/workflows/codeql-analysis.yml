@@ -66,7 +66,7 @@ jobs:
     #   make bootstrap
     #   make release
     - run: msbuild umbraco.sln
-      working-directory: .\src
+      working-directory: src
     
     # This doesn't work
     #- name: Execute build.bat
