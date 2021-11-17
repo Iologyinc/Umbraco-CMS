@@ -62,10 +62,13 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    - run: |
-        build.bat
+    #- run: |
     #   make bootstrap
     #   make release
+    
+    - name: Execute build.bat
+      run: build.bat
+      working-directory: .
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
