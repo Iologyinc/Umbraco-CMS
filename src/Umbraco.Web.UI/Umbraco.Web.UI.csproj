@@ -1059,17 +1059,23 @@ xcopy "$(ProjectDir)"..\packages\SqlServerCE.4.0.0.1\x86\*.* "$(TargetDir)x86\" 
   <PropertyGroup Condition="$(WebPublishingTasks) == '' and Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll')">
     <WebPublishingTasks>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll</WebPublishingTasks>
   </PropertyGroup>
+  <!--
   <UsingTask TaskName="TransformXml" AssemblyFile="$(WebPublishingTasks)" Condition="'$(WebPublishingTasks)' != ''" />
   <UsingTask TaskName="TransformXml" AssemblyFile="$(VSWherePath)\Microsoft\VisualStudio\v15.0\Web\Microsoft.Web.Publishing.Tasks.dll" Condition="'$(VSWherePath)' != ''" />
+  -->
   <Target Name="BeforeBuild">
     <Message Text="WebPublishingTasks: $(WebPublishingTasks)" Importance="high" />
     <Message Text="VSWherePath: $(VSWherePath)" Importance="high" />
     <!-- Create web.config file from Template if it doesn't exist -->
     <Copy SourceFiles="$(ProjectDir)web.Template.config" DestinationFiles="$(ProjectDir)Web.config" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" Condition="!Exists('$(ProjectDir)Web.config')" />
     <!-- Transform the local Web.config file in Visual Studio -->
+	<!--
     <TransformXml Source="$(ProjectDir)Web.config" Transform="$(ProjectDir)web.Template.$(Configuration).config" Destination="$(ProjectDir)Web.$(Configuration).config.transformed" Condition="$(BuildingInsideVisualStudio) == true" />
+	-->
     <!-- Always transform the Template file when not in VS (ie: build.bat) -->
+	<!--
     <TransformXml Source="$(ProjectDir)Web.Template.config" Transform="$(ProjectDir)web.Template.$(Configuration).config" Destination="Web.$(Configuration).config.transformed" Condition="$(BuildingInsideVisualStudio) != true" />
+	-->
     <!-- Create ClientDependency.config file from Template if it doesn't exist -->
     <Copy SourceFiles="$(ProjectDir)Config\ClientDependency.Release.config" DestinationFiles="$(ProjectDir)Config\ClientDependency.config" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" Condition="!Exists('$(ProjectDir)Config\ClientDependency.config')" />
     <!-- Only runs if the Belle build folder doesn't yet exist -->
