@@ -67,7 +67,7 @@ jobs:
     #   make release
     
     - name: Execute build.bat
-      shell: cmd
+      shell: pwsh
       run: .\build.bat
 
     - name: Perform CodeQL Analysis
