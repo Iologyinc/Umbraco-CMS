@@ -67,9 +67,8 @@ jobs:
     #   make release
     
     - name: Execute build.bat
+      run: build
       shell: cmd
-      run: build.bat
-      working-directory: .
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
